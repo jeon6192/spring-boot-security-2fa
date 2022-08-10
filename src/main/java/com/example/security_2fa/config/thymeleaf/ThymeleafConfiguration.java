@@ -2,7 +2,6 @@ package com.example.security_2fa.config.thymeleaf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.web.servlet.ViewResolver;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
@@ -14,13 +13,13 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 @Configuration
 public class ThymeleafConfiguration {
 
-    private static final String CHARACTOR_SET = "UTF-8";
+    private static final String CHARACTER_SET = "UTF-8";
 
 	@Bean
     public ViewResolver viewResolver() {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
-        resolver.setCharacterEncoding(CHARACTOR_SET);
+        resolver.setCharacterEncoding(CHARACTER_SET);
         return resolver;
     }
 
@@ -37,7 +36,7 @@ public class ThymeleafConfiguration {
         resolver.setPrefix("classpath:/templates/");
         resolver.setSuffix(".html");
         resolver.setTemplateMode(TemplateMode.HTML);
-        resolver.setCharacterEncoding(CHARACTOR_SET);
+        resolver.setCharacterEncoding(CHARACTER_SET);
         return resolver;
     }
 
@@ -47,7 +46,7 @@ public class ThymeleafConfiguration {
         emailTemplateResolver.setPrefix("/templates/mails/");
         emailTemplateResolver.setSuffix(".html");
         emailTemplateResolver.setTemplateMode(TemplateMode.HTML);
-        emailTemplateResolver.setCharacterEncoding(CHARACTOR_SET);
+        emailTemplateResolver.setCharacterEncoding(CHARACTER_SET);
         return emailTemplateResolver;
     }
 }

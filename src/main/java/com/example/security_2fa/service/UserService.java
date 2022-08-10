@@ -55,7 +55,7 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Can Not Found User"));
-
+user.hashCode()
         return CustomUserDetails.builder()
                 .username(user.getUsername())
                 .password(user.getPassword())
