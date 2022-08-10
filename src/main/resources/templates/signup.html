@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>signup</title>
+    <script>
+        async function signup() {
+            const form = document.getElementById('signup-form');
+            const jsonData = formToJson(form);
+
+            try {
+                const settings = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(jsonData)
+                }
+                const response = await fetch(`http://localhost:8200/signup`, settings);
+                const data = await response.json();
+
+                console.log(data);
+                alert('good');
+
+                location.href = '/';
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        function formToJson(formData) {
+            const arr = Array.from(formData);
+
+            return arr
+                .map(v => {
+                    return { 'id': v.name, 'value': v.value };
+                })
+                .reduce((obj, item) => (obj[item.id] = item.value, obj), {});
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <button type="button" onclick="location.href = '/'">Home</button>
+    </div>
+    <form id="signup-form">
+        <div>
+            <div>
+                <input type="text" autocomplete="off" placeholder="Username" name="username" required style="padding: 5px;" />
+            </div>
+            <div>
+                <input type="password" autocomplete="off" placeholder="Password" name="password" required style="padding: 5px;" />
+            </div>
+            <div>
+                <input type="email" autocomplete="off" placeholder="Email" name="email" required style="padding: 5px;" />
+            </div>
+            <div>
+                <input type="text" autocomplete="off" placeholder="Phone" name="phone" required style="padding: 5px;" />
+            </div>
+        </div>
+
+        <div>
+            <button id="signup-btn" class="btn green" type="submit" onclick="signup(); return false;">Sign Up</button>
+        </div>
+    </form>
+</body>
+</html>

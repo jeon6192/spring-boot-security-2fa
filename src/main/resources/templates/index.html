@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index</title>
+	<script>
+		function move(type) {
+			location.href = `/${type}`;
+		}
+	</script>
+</head>
+<body>
+	<div>
+		<h1>Spring security + OTP</h1>
+	</div>
+	<div>
+		<button type="button" onclick="move('login')">Login</button>
+		<button type="button" onclick="move('signup')">Signup</button>
+	</div>
+</body>
+</html>
